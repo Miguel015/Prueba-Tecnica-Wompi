@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16
+    container_name: wompi-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: wompi
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: wompi-backend
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/wompi?schema=public
+      PORT: 3001
+      WOMPI_BASE_URL: https://api-sandbox.co.uat.wompi.dev/v1
+      WOMPI_PUBLIC_KEY: pub_stagtest_g2u0HQd3ZMh05hsSgTS2lUV8t3s4mOt7
+      WOMPI_PRIVATE_KEY: prv_stagtest_5i0ZGIGiFcDQifYsXxvsny7Y37tKqFWg
+      WOMPI_INTEGRITY_KEY: stagtest_integrity_nAIBuqayW70XpUqJS4qf4STYiISd89Fp
+    ports:
+      - '3001:3001'
+
+volumes:
+  postgres-data:
