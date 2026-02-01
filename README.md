@@ -5,6 +5,16 @@ Monorepo con una API en NestJS y una SPA en React para procesar pagos con Wompi 
 - Backend: NestJS 11 + Prisma + PostgreSQL + arquitectura hexagonal + Railway Oriented Programming (ROP).
 - Frontend: React + Vite + Redux Toolkit, mobile-first, persistiendo el borrador de la transacción en el navegador.
 
+## Deploy en la nube
+
+- Frontend (SPA): https://prueba-tecnica-wompi.vercel.app/
+- Backend (API): https://prueba-tecnica-wompi.onrender.com
+
+Producto de prueba semillado en la base de datos:
+
+- ID: `00000000-0000-0000-0000-000000000001`
+- Endpoint directo: https://prueba-tecnica-wompi.onrender.com/api/products/00000000-0000-0000-0000-000000000001
+
 ## Estructura del proyecto
 
 - `backend/` – API REST en NestJS.
