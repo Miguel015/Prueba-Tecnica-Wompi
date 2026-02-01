@@ -2,6 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || '',
+});
+
 export type TransactionStatus = 'IDLE' | 'PENDING' | 'APPROVED' | 'DECLINED' | 'ERROR';
 
 export interface CardInfo {
@@ -75,7 +79,7 @@ export const createTransaction = createAsyncThunk(
       card: CardInfo;
     },
   ) => {
-    const response = await axios.post('/api/transactions', payload);
+    const response = await api.post('/api/transactions', payload);
     return response.data as {
       transactionId: string;
       status: Exclude<TransactionStatus, 'IDLE'>;
