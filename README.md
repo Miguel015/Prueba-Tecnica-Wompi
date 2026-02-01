@@ -10,6 +10,11 @@ Monorepo con una API en NestJS y una SPA en React para procesar pagos con Wompi 
 - Frontend (SPA): https://prueba-tecnica-wompi.vercel.app/
 - Backend (API): https://prueba-tecnica-wompi.onrender.com
 
+Documentación de la API:
+
+- Swagger UI: https://prueba-tecnica-wompi.onrender.com/docs
+- Colección de Postman: `postman/wompi-payment.postman_collection.json` (usar la variable `baseUrl` para apuntar a local o Render).
+
 Producto de prueba semillado en la base de datos:
 
 - ID: `00000000-0000-0000-0000-000000000001`

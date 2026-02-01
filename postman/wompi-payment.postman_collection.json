@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Wompi Technical Test API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection for testing the Wompi technical test backend API. Configure the `baseUrl` variable to point to localhost or Render."
+  },
+  "item": [
+    {
+      "name": "Get Product by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/00000000-0000-0000-0000-000000000001",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "00000000-0000-0000-0000-000000000001"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Payment Transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": \"00000000-0000-0000-0000-000000000001\",\n  \"customer\": {\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"documentNumber\": \"123456789\"\n  },\n  \"delivery\": {\n    \"address\": \"Fake Street 123\"\n  },\n  \"card\": {\n    \"number\": \"4111111111111111\",\n    \"expMonth\": \"12\",\n    \"expYear\": \"40\",\n    \"cvc\": \"123\",\n    \"cardHolderName\": \"Test User\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/transactions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "transactions"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001"
+    }
+  ]
+}
